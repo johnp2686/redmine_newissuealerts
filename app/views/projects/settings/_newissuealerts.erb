@@ -7,7 +7,7 @@ can_edit = User.current.allowed_to?(:edit_newissuealerts, @project)
 <%= link_to(l(:newissuealerts_text), {:controller => 'newissuealerts', :action => 'new', :project_id => @project.identifier}, :class => 'icon icon-add' ) %> 
 </p>
 <% end %>
-<% @newissuealerts = Newissuealert.find(:all, :conditions => { :project_id => @project.id } ) %>
+<% @newissuealerts = Newissuealert.where(:project_id => @project.id) %>
 <% for newissuealert in @newissuealerts %> 
 <div class="box tabular settings">
 <p><label><%= l(:email_addresses) %>:</label> <%= newissuealert.mail_addresses %></p>
